@@ -55,7 +55,7 @@ Contributions are welcome! If you would like to contribute to this project, plea
 
 ## Questions
 
-If you have any questions or need further assistance, please feel free to reach out.
+If you have any questions or need further assistance, please feel free to reach out
 
 - Project Repository: https://github.com/DanielkKostich/express_note_taker
 - Issues: https://github.com/DanielkKostich/express_note_taker/issues
