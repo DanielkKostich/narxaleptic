@@ -1,58 +1,60 @@
 const util = require('util');
 const fs = require('fs');
-
-// This package will be used to generate our unique ids. https://www.npmjs.com/package/uuid
-const uuidv1 = require('uuid/v1');
+const { v1: uuidv1 } = require('uuid');
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
 class Store {
-  read() {
-    return readFileAsync('./db/db.json', 'utf8');
+  async read() {
+    try {
+      const notesData = await readFileAsync('./db.json', 'utf8');
+      return JSON.parse(notesData) || [];
+    } catch (err) {
+      return [];
+    }
   }
 
-  write(note) {
-    return writeFileAsync('./db/db.json', JSON.stringify(note));
+  async write(notes) {
+    await writeFileAsync('./db.json', JSON.stringify(notes));
   }
 
-  getNotes() {
-    return this.read().then((notes) => {
-      let parsedNotes;
-
-      // If notes isn't an array or can't be turned into one, send back a new empty array
-      try {
-        parsedNotes = [].concat(JSON.parse(notes));
-      } catch (err) {
-        parsedNotes = [];
-      }
-
-      return parsedNotes;
-    });
+  async getNotes() {
+    try {
+      const notes = await this.read();
+      return Array.isArray(notes) ? notes : [];
+    } catch (err) {
+      return [];
+    }
   }
 
-  addNote(note) {
+  async addNote(note) {
     const { title, text } = note;
 
     if (!title || !text) {
       throw new Error("Note 'title' and 'text' cannot be blank");
     }
 
-    // Add a unique id to the note using uuid package
     const newNote = { title, text, id: uuidv1() };
 
-    // Get all notes, add the new note, write all the updated notes, return the newNote
-    return this.getNotes()
-      .then((notes) => [...notes, newNote])
-      .then((updatedNotes) => this.write(updatedNotes))
-      .then(() => newNote);
+    try {
+      const notes = await this.getNotes();
+      const updatedNotes = [...notes, newNote];
+      await this.write(updatedNotes);
+      return newNote;
+    } catch (err) {
+      throw new Error('Failed to add note');
+    }
   }
 
-  removeNote(id) {
-    // Get all notes, remove the note with the given id, write the filtered notes
-    return this.getNotes()
-      .then((notes) => notes.filter((note) => note.id !== id))
-      .then((filteredNotes) => this.write(filteredNotes));
+  async removeNote(id) {
+    try {
+      const notes = await this.getNotes();
+      const filteredNotes = notes.filter((note) => note.id !== id);
+      await this.write(filteredNotes);
+    } catch (err) {
+      throw new Error('Failed to remove note');
+    }
   }
 }
 

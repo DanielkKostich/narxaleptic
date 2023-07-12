@@ -1,29 +1,32 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const store = require('../db/store');
 
-// GET "/api/notes" responds with all notes from the database
-router.get('/notes', (req, res) => {
-  store
-    .getNotes()
-    .then((notes) => {
-      return res.json(notes);
-    })
-    .catch((err) => res.status(500).json(err));
+router.get('/notes', async (req, res) => {
+  try {
+    const notes = await store.getNotes();
+    res.json(notes);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to retrieve notes' });
+  }
 });
 
-router.post('/notes', (req, res) => {
-  store
-    .addNote(req.body)
-    .then((note) => res.json(note))
-    .catch((err) => res.status(500).json(err));
+router.post('/notes', async (req, res) => {
+  try {
+    const note = await store.addNote(req.body);
+    res.json(note);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to add note' });
+  }
 });
 
-// DELETE "/api/notes" deletes the note with an id equal to req.params.id
-router.delete('/notes/:id', (req, res) => {
-  store
-    .removeNote(req.params.id)
-    .then(() => res.json({ ok: true }))
-    .catch((err) => res.status(500).json(err));
+router.delete('/notes/:id', async (req, res) => {
+  try {
+    await store.removeNote(req.params.id);
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to delete note' });
+  }
 });
 
 module.exports = router;
