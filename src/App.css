@@ -1,12 +1,38 @@
 
 
-.section{
-  height: 90vh
+.hero{
+  background-color: black;
+}
+
+.contact{
+  height: 100vh;
+  background-color: beige;
 }
 
 
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
 
+.nav-link.active {
+  color: rgb(0, 3, 0); 
+}
 
+.about{
+  color: rgb(0, 2, 0);
+  background-color: beige;
+  justify-content: center;
+}
+
+.header{
+  text-align: center;
+}
+
+.para{
+  margin-left: 9%;
+  margin-right: 9%;
+}
 
 .menu {
   background-color: #48546d;
@@ -19,11 +45,7 @@
   color: rgba(0, 0, 0, 0.363);
 }
 
-.item {
-  color:chartreuse;
-  list-style-type: none;
-  margin-right: 10px;
-}
+
 
 
 
@@ -31,7 +53,7 @@
 .menu a {
   
   margin: 0 10px; /* Adjust the margin as needed */
-  color: purple;
+  color: rgb(4, 248, 44);
   text-decoration: none; 
 }
 
@@ -40,7 +62,7 @@ a:hover{
 }
 
 .gallery{
-  background-color: blanchedalmond;
+  background-color: beige;
   height: 100vh
 }
 @keyframes App-logo-spin {

@@ -7,7 +7,7 @@ function NavBar({ currentPage, handlePageChange }) {
   };
 
   return (
-    <ul className="nav nav-pills nav-justified menu">
+    <ul className="nav  nav-justified menu">
       <li className="item">
         <a
           href="/"
@@ -15,6 +15,15 @@ function NavBar({ currentPage, handlePageChange }) {
           className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
         >
           Home
+        </a>
+      </li>
+      <li className="item">
+        <a
+          href="/about"
+          onClick={(event) => handleLinkClick(event, 'About')}
+          className={currentPage === 'About' ? 'nav-link active' : 'nav-link'}
+        >
+          About Us
         </a>
       </li>
       <li className="item">
@@ -35,15 +44,7 @@ function NavBar({ currentPage, handlePageChange }) {
           Contact
         </a>
       </li>
-      <li className="item">
-        <a
-          href="/about"
-          onClick={(event) => handleLinkClick(event, 'About')}
-          className={currentPage === 'About' ? 'nav-link active' : 'nav-link'}
-        >
-          About Us!
-        </a>
-      </li>
+      
     </ul>
   );
 }

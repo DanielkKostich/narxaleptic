@@ -1,15 +1,23 @@
 import React from 'react';
+import image1 from '../images/camaro.jpg';
+import image2 from '../images/mod.jpg';
+
+const images = [image1, image2];
 
 function Gallery() {
   return (
-    <div className = 'gallery'>
-      <h2>Gallery Page</h2>
-    Paragraph 1:
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique elit id tortor ullamcorper, vel rutrum elit porta. Cras ultrices fermentum sem vitae convallis. Quisque a mauris fringilla, lacinia urna at, gravida leo. Vivamus mollis dignissim metus vitae tincidunt. Nam pulvinar felis vitae mauris pharetra, in sollicitudin ligula sagittis. Mauris dapibus magna sed odio dignissim facilisis. Suspendisse at neque massa. Nulla facilisi. Nunc non efficitur odio, ac congue velit. Nullam eget libero ut nisl aliquam vulputate. Sed vitae lorem hendrerit, pharetra purus nec, convallis nulla. Fusce venenatis, lectus a cursus finibus, dui ipsum feugiat mauris, a gravida ex risus vitae velit.
-
-Paragraph 2:
-In eu lacinia arcu, ut tempus purus. Maecenas bibendum, odio ut iaculis tincidunt, nisi eros volutpat massa, nec lobortis nunc sapien at enim. Sed tincidunt lacus quis dui sagittis, id varius ligula aliquet. Nunc ultrices luctus velit id congue. Quisque placerat diam quis enim laoreet, sed vulputate arcu viverra. Vivamus sollicitudin consectetur libero, ut commodo justo tincidunt ut. Nullam nec ipsum nec tellus cursus sollicitudin. Nullam ac fermentum velit. Sed auctor elit quis libero luctus, vitae rhoncus enim viverra. Suspendisse condimentum varius mi, et ultrices diam interdum sed. Proin vel est sit amet odio bibendum mattis sed ut ante. 
-
+    <div className="gallery">
+      <h2 className="header">Gallery:</h2>
+      <div>
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Car ${index + 1}`}
+            style={{ maxWidth: 200, maxHeight: 200 }}
+          />
+        ))}
+      </div>
     </div>
   );
 }
