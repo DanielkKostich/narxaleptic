@@ -1,36 +1,39 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import React, { useState } from 'react';
+import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
-
+import About from './components/About';
+import './App.css';
 
 function App() {
-  return (
-    <Router>
-      <div>
-        <Navbar bg="dark" variant="dark" expand="md">
-          <Navbar.Brand as={Link} to="/">Narxaleptic</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-nav" />
-          <Navbar.Collapse id="navbar-nav">
-            <Nav className="ml-auto">
-              <Nav.Link as={Link} to="/">Home</Nav.Link>
-              <Nav.Link as={Link} to="/gallery">Gallery</Nav.Link>
-              <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+  const [currentPage, setCurrentPage] = useState('Home');
 
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/contact" component={Contact} />
-        </Switch>
-      </div>
-    </Router>
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const getPageComponent = () => {
+    switch (currentPage) {
+      case 'Home':
+        return <Home />;
+      case 'Gallery':
+        return <Gallery />;
+      case 'Contact':
+        return <Contact />;
+      case 'About':
+        return <About />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div>
+      <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
+      {getPageComponent()}
+    </div>
   );
 }
 
 export default App;
-

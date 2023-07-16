@@ -1,16 +1,19 @@
-import { Jumbotron, Container, Button } from 'react-bootstrap';
+import { Jumbotron, Container,  } from 'react-bootstrap';
 
 
 
 function Home() {
   return (
-    <Jumbotron fluid className="bg-dark text-white">
+    <div className = 'contact'>
+    <Jumbotron fluid className="hero text-white  header " >
       <Container>
         <h1>Welcome to Narxaleptic</h1>
-        <p>We specialize in building cars.</p>
-        <Button variant="primary">Learn More</Button>
+        <p>We specialize in building  custom cars.</p>
+        
       </Container>
     </Jumbotron>
+    
+    </div>
   );
 }
 
