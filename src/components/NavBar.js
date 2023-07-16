@@ -41,7 +41,7 @@ function NavBar({ currentPage, handlePageChange }) {
           onClick={(event) => handleLinkClick(event, 'About')}
           className={currentPage === 'About' ? 'nav-link active' : 'nav-link'}
         >
-          About Us
+          About Us!
         </a>
       </li>
     </ul>
