@@ -8,13 +8,13 @@ function Gallery() {
   return (
     <div className="gallery">
       <h2 className="header">Gallery:</h2>
-      <div>
+      <div className="image-container">
         {images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Car ${index + 1}`}
-            style={{ maxWidth: 200, maxHeight: 200 }}
+            className="gallery-image"
           />
         ))}
       </div>

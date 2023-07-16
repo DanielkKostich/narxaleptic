@@ -19,6 +19,17 @@
   color: rgb(0, 3, 0); 
 }
 
+.image-container {
+  display: flex;
+  gap: 20px; /* Adjust the desired spacing between images */
+}
+
+.gallery-image {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+
 .about{
   color: rgb(0, 2, 0);
   background-color: beige;
