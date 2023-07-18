@@ -1,30 +1,21 @@
+// server.js
+
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
+const schema = require('./db/schema');
+const resolvers = require('./db/resolvers');
 
-// Create an instance of Express
 const app = express();
 
-// Define your GraphQL schema
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-// Create a root resolver
-const root = {
-  hello: () => 'Hello, World!'
-};
-
-// Add a GraphQL endpoint to the Express server
+// Add GraphQL middleware
 app.use('/graphql', graphqlHTTP({
   schema: schema,
-  rootValue: root,
-  graphiql: true  // Enable GraphiQL GUI for testing
+  rootValue: resolvers,
+  graphiql: true // Enable GraphiQL GUI for testing
 }));
 
-// Start the server
+// Your existing routes and middleware
+
 app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000/graphql'); 
+  console.log('Server is running on http://localhost:3000/graphql');
 });
