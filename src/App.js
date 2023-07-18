@@ -4,34 +4,36 @@ import Home from './components/Home';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import About from './components/About';
+import SignupPopup from './components/SignupPopup';
 import './App.css';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    setIsSignupOpen(page === 'Gallery');
   };
 
-  const getPageComponent = () => {
-    switch (currentPage) {
-      case 'Home':
-        return <Home />;
-      case 'Gallery':
-        return <Gallery />;
-      case 'Contact':
-        return <Contact />;
-      case 'About':
-        return <About />;
-      default:
-        return null;
-    }
+  const openSignupPopup = () => {
+    setIsSignupOpen(true);
+  };
+
+  const closeSignupPopup = () => {
+    setIsSignupOpen(false);
   };
 
   return (
     <div>
       <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
-      {getPageComponent()}
+      {currentPage === 'Gallery' && (
+        <Gallery onGalleryLoaded={openSignupPopup} />
+      )}
+      {isSignupOpen && <SignupPopup onPopupClosed={closeSignupPopup} />}
+      {currentPage === 'Home' && <Home />}
+      {currentPage === 'Contact' && <Contact />}
+      {currentPage === 'About' && <About />}
     </div>
   );
 }
