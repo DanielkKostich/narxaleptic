@@ -1,11 +1,19 @@
-// server.js
-
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./db/schema');
 const resolvers = require('./db/resolvers');
+const mongoose = require('mongoose');
 
 const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/contact-page', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Failed to connect to MongoDB:', error);
+  });
 
 // Add GraphQL middleware
 app.use('/graphql', graphqlHTTP({
