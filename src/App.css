@@ -1,4 +1,7 @@
-
+.carousel-container {
+  width: 33.33%; /* Set the width to one-third */
+  margin: auto; /* Center the container horizontally */
+}
 
 .home{
   background-color: beige;
@@ -22,12 +25,16 @@
 
 .image-container {
   display: flex;
-  gap: 20px; /* Adjust the desired spacing between images */
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .gallery-image {
-  max-width: 200px;
-  max-height: 200px;
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  margin: 10px;
 }
 
 
@@ -77,11 +84,6 @@ a:hover{
   background-color: beige;
   height: 100vh
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
+
