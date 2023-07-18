@@ -1,8 +1,10 @@
 import React from 'react';
 import image1 from '../images/camaro.jpg';
 import image2 from '../images/mod.jpg';
-
-const images = [image1, image2];
+import image3 from '../images/midget.jpg';
+import image4 from '../images/dakota.jpg';
+import image5 from '../images/s-10.jpg';
+const images = [image1, image2,image3,image4,image5];
 
 function Gallery() {
   return (
