@@ -5,6 +5,7 @@ import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import About from './components/About';
 import SignupPopup from './components/SignupPopup';
+import SignupPage from './components/SignupPage';
 import './App.css';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    setIsSignupOpen(page === 'Gallery');
+    setIsSignupOpen(page === 'SignupPage');
   };
 
   const openSignupPopup = () => {
@@ -27,13 +28,14 @@ function App() {
   return (
     <div>
       <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
-      {currentPage === 'Gallery' && (
-        <Gallery onGalleryLoaded={openSignupPopup} />
+      {currentPage === 'SignupPage' && (
+        <SignupPage onSignupPageLoaded={openSignupPopup} />
       )}
       {isSignupOpen && <SignupPopup onPopupClosed={closeSignupPopup} />}
       {currentPage === 'Home' && <Home />}
       {currentPage === 'Contact' && <Contact />}
       {currentPage === 'About' && <About />}
+      {currentPage === 'Gallery' && <Gallery />}
     </div>
   );
 }
