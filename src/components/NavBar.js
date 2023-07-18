@@ -7,7 +7,7 @@ function NavBar({ currentPage, handlePageChange }) {
   };
 
   return (
-    <ul className="nav  nav-justified menu">
+    <ul className="nav   menu">
       <li className="item">
         <a
           href="/"
@@ -44,7 +44,15 @@ function NavBar({ currentPage, handlePageChange }) {
           Contact
         </a>
       </li>
-      
+      <li className="item">
+        <a
+          href="/signuppage"
+          onClick={(event) => handleLinkClick(event, 'SignupPage')}
+          className={currentPage === 'SignupPage' ? 'nav-link active' : 'nav-link'}
+        >
+          Sign Up
+        </a>
+      </li>
     </ul>
   );
 }

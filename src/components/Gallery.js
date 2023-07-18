@@ -10,22 +10,22 @@ import s10 from '../images/s-10.jpg';
 import '../App.css';
 
 function Gallery() {
-  const renderCarouselItem = (imageSrc, altText, legend) => (
+  const renderCarouselItem = (imageSrc, altText, ) => (
     <div>
       <img className="carousel-image" src={imageSrc} alt={altText} />
-      <p className="legend">{legend}</p>
+     
     </div>
   );
 
   return (
-    <Jumbotron fluid className="contact home">
+    <Jumbotron fluid className=" gallery">
       <Container>
-        <h1>Our Previous Work</h1>
-        <p>We specialize in building cars.</p>
+        <h1 className = 'header'>Our Previous Work</h1>
+        <p className = 'header'>We specialize in building cars.</p>
       </Container>
       <div className="carousel-container">
         <Carousel
-          showArrows={true}
+          showArrows={false}
           showStatus={false}
           showIndicators={false}
           showThumbs={false}
