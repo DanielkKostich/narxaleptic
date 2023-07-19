@@ -30,7 +30,7 @@ function Home() {
       <br></br>
 
       <section >
-        <h1>Why Choose Us?</h1>
+        <h1 className = 'header'>Why Choose Us?</h1>
         <br></br>
         <h3>Expertise and Craftsmanship:</h3>
         <p className = 'para'>Our passionate team of professionals delivers top-quality craftsmanship with meticulous attention to detail.</p>

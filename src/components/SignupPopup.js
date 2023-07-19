@@ -7,21 +7,35 @@ const SignupPopup = ({ onPopupClosed }) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Perform any validation or data processing here
-    // (e.g., check for valid email format, send the data to a server, etc.)
-    // You can use a library like Axios to make API requests.
-
-    // Clear the form after submission
-    setEmail('');
-
-    // Close the popup after successful submission
-    if (onPopupClosed) {
-      onPopupClosed();
+  
+    try {
+      const response = await fetch('http://localhost:3000/db/db.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+  
+      if (response.ok) {
+        console.log('Email saved successfully');
+        setEmail('');
+  
+        // Close the popup after successful submission
+        if (onPopupClosed) {
+          onPopupClosed();
+        }
+      } else {
+        console.error('Failed to save email');
+      }
+    } catch (error) {
+      console.error('Error saving email:', error);
     }
   };
+  
+  
 
   return (
     <div className="popup-container">

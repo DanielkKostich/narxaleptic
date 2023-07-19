@@ -4,11 +4,12 @@ const schema = require('./db/schema');
 const resolvers = require('./db/resolvers');
 const mongoose = require('mongoose');
 
+
 const app = express();
 
 // Connect to MongoDB
 mongoose
-  .connect('mongodb://localhost:27017/testdb', {
+  .connect('mongodb://127.0.0.1:27017/newsletter', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -34,5 +35,5 @@ app.use(
 
 const port = 3000;
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}/graphql`);
+  console.log( `Server is running on http://localhost:${port}/graphql`);
 });
