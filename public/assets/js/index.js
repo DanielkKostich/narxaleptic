@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const newNoteBtn = document.querySelector('#new-note');
   const noteList = document.querySelector('#list-group');
 
+  
   let activeNote = {};
 
   const showElement = (element) => {
