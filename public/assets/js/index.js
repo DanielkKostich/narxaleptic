@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const getNotes = () =>
-    fetch('/db/store.js', {
+    fetch('/notes/notes', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then((response) => response.json());
 
   const saveNote = (note) =>
-    fetch('/db/store.js', {
+    fetch('/notes/notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then((response) => response.json());
 
   const deleteNote = (id) =>
-    fetch(`/db/store.js/${id}`, {
+    fetch(`/notes/notes/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -125,6 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const renderNoteList = (notes) => {
+    if (noteList === null) {
+      return;
+    }
+
     noteList.innerHTML = '';
 
     if (notes.length === 0) {
@@ -158,15 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
     getNotes()
       .then((notes) => renderNoteList(notes))
       .catch((err) => {
-        //console.error(err);
+        console.error(err);
       });
   };
 
-  saveNoteBtn.addEventListener('click', handleNoteSave);
-  newNoteBtn.addEventListener('click', handleNewNoteView);
-  noteTitle.addEventListener('keyup', handleRenderSaveBtn);
-  noteText.addEventListener('keyup', handleRenderSaveBtn);
+  if (window.location.pathname === '/notes') {
+    saveNoteBtn.addEventListener('click', handleNoteSave);
+    newNoteBtn.addEventListener('click', handleNewNoteView);
+    noteTitle.addEventListener('keyup', handleRenderSaveBtn);
+    noteText.addEventListener('keyup', handleRenderSaveBtn);
+  }
 
   getAndRenderNotes();
 });
-``

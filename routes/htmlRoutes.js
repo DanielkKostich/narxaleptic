@@ -4,12 +4,12 @@ const router = express.Router();
 
 
 router.get('/notes', (req, res) => {
-  const notesFilePath = path.join(__dirname, 'notes.html');
+  const notesFilePath = path.join(__dirname, '../public/notes.html');
   res.sendFile(notesFilePath);
 });
 
 router.get('/', (req, res) => {
-  const indexPath = path.join(__dirname, 'index.html');
+  const indexPath = path.join(__dirname, '../public/index.html');
   res.sendFile(indexPath);
 });
 

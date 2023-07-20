@@ -8,6 +8,7 @@ router.get('/notes', async (req, res) => {
     res.json(notes);
   } catch (err) {
     res.status(500).json({ error: 'Failed to retrieve notes' });
+    console.log(err)
   }
 });
 
