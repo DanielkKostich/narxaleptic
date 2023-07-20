@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const getNotes = () =>
-    fetch('/notes/notes', {
+    fetch('./notes/notes', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then((response) => response.json());
 
   const saveNote = (note) =>
-    fetch('/notes/notes', {
+    fetch('/notes/store.js', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then((response) => response.json());
 
   const deleteNote = (id) =>
-    fetch(`/notes/notes/${id}`, {
+    fetch(`/notes/store.js/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
