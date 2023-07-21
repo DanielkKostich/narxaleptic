@@ -1,45 +1,35 @@
 import React, { useState } from 'react';
-import NavBar from './components/NavBar';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
+import About from './components/About';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
-import About from './components/About';
-import SignupPopup from './components/SignupPopup';
 import SignupPage from './components/SignupPage';
-import './App.css';
+import Loginpage from './components/Loginpage';
+import NavBar from './components/NavBar';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('Home');
-  const [isSignupOpen, setIsSignupOpen] = useState(false);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    setIsSignupOpen(page === 'SignupPage');
-  };
-
-  const openSignupPopup = () => {
-    setIsSignupOpen(true);
-  };
-
-  const closeSignupPopup = () => {
-    setIsSignupOpen(false);
   };
 
   return (
-    <div>
-      <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
-      {currentPage === 'SignupPage' && (
-        <SignupPage onSignupPageLoaded={openSignupPopup} />
-      )}
-      {isSignupOpen && <SignupPopup onPopupClosed={closeSignupPopup} />}
-      {currentPage === 'Home' && <Home />}
-      {currentPage === 'Contact' && <Contact />}
-      {currentPage === 'About' && <About />}
-      {currentPage === 'Gallery' && <Gallery />}
-      
-      
-      
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/gallery" component={Gallery} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/signuppage" component={SignupPage} />
+          <Route path="/loginpage" component={Loginpage} />
+        </Switch>
+      </div>
+    </Router>
+
   );
 }
 

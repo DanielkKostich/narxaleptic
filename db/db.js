@@ -4,7 +4,9 @@ const fs = require('fs');
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/email', {
+
+    await mongoose.connect('mongodb://localhost:27017/testdb', {
+
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -15,30 +17,4 @@ const connectDB = async () => {
   }
 };
 
-// Define the email schema
-const emailSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-  },
-});
-
-// Define the email model
-const Email = mongoose.model('Email', emailSchema);
-
-// Save an email to the database
-const saveEmail = async (email) => {
-  try {
-    const newEmail = new Email({ email });
-    await newEmail.save();
-    console.log('Email saved successfully');
-  } catch (error) {
-    console.error('Error saving email:', error);
-    throw error;
-  }
-};
-
-module.exports = {
-  connectDB,
-  saveEmail,
-};
+module.exports = connectDB;

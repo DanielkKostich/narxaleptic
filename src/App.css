@@ -114,6 +114,17 @@ p{
   border: dotted;
   cursor: pointer;
 }
+.Signuppage {
+  background-image: url('/src/images/machine-tools_585723-81.avif');
+  max-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: rgb(117, 114, 114);
+
+}
 
 
 

@@ -1,57 +1,65 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'; // Use NavLink instead of Link
 
 function NavBar({ currentPage, handlePageChange }) {
-  const handleLinkClick = (event, page) => {
-    event.preventDefault();
-    handlePageChange(page);
-  };
+  // Remove the handleLinkClick function
 
   return (
-    <ul className="nav   menu">
+    <ul className="nav menu">
       <li className="item">
-        <a
-          href="/"
-          onClick={(event) => handleLinkClick(event, 'Home')}
-          className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
+        <NavLink
+          exact
+          to="/" // Use "exact" for the homepage to match only when the path is exactly "/"
+          className="nav-link"
+          activeClassName="active" // Use "activeClassName" to apply the active class when the link is active
         >
           Home
-        </a>
+        </NavLink>
       </li>
       <li className="item">
-        <a
-          href="/about"
-          onClick={(event) => handleLinkClick(event, 'About')}
-          className={currentPage === 'About' ? 'nav-link active' : 'nav-link'}
+        <NavLink
+          to="/about"
+          className="nav-link"
+          activeClassName="active"
         >
           About Us
-        </a>
+        </NavLink>
       </li>
       <li className="item">
-        <a
-          href="/gallery"
-          onClick={(event) => handleLinkClick(event, 'Gallery')}
-          className={currentPage === 'Gallery' ? 'nav-link active' : 'nav-link'}
+        <NavLink
+          to="/gallery"
+          className="nav-link"
+          activeClassName="active"
         >
           Gallery
-        </a>
+        </NavLink>
       </li>
       <li className="item">
-        <a
-          href="/contact"
-          onClick={(event) => handleLinkClick(event, 'Contact')}
-          className={currentPage === 'Contact' ? 'nav-link active' : 'nav-link'}
+        <NavLink
+          to="/contact"
+          className="nav-link"
+          activeClassName="active"
         >
           Contact
-        </a>
+        </NavLink>
       </li>
       <li className="item">
-        <a
-          href="/signuppage"
-          onClick={(event) => handleLinkClick(event, 'SignupPage')}
-          className={currentPage === 'SignupPage' ? 'nav-link active' : 'nav-link'}
+        <NavLink
+          to="/signuppage"
+          className="nav-link"
+          activeClassName="active"
         >
           Sign Up
-        </a>
+        </NavLink>
+      </li>
+      <li className="item">
+        <NavLink
+          to="/loginpage"
+          className="nav-link"
+          activeClassName="active"
+        >
+          Login
+        </NavLink>
       </li>
     </ul>
   );

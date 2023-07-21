@@ -1,55 +1,57 @@
-const fs = require('fs');
-const path = require('path');
-
-const dbPath = path.join(__dirname, './db.json');
-
-const getUsers = () => {
-  const data = fs.readFileSync(dbPath);
-  return JSON.parse(data);
-};
-
-const saveUsers = (users) => {
-  const data = JSON.stringify(users, null, 2);
-  fs.writeFileSync(dbPath, data);
-};
+// db/resolvers.js
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
 const resolvers = {
-  getUser: ({ id }) => {
-    const users = getUsers();
-    return users.find(user => user.id === id);
+  Query: {
+    users: async () => {
+      const users = await User.find();
+      return users;
+    },
   },
-  getAllUsers: () => {
-    return getUsers();
+  Mutation: {
+    signup: async (_, { username, email, password }) => {
+      const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+      if (existingUser) {
+        throw new Error('Email or username already exists');
+      }
+
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+      const newUser = new User({
+        username,
+        email,
+        password: hashedPassword,
+      });
+
+      await newUser.save();
+
+      const token = jwt.sign({ userId: newUser._id }, 'YOUR_SECRET_KEY', {
+        expiresIn: '1h',
+      });
+
+      return newUser;
+    },
+    login: async (_, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new Error('User not found');
+      }
+
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        throw new Error('Invalid password');
+      }
+
+      const token = jwt.sign({ userId: user._id }, 'YOUR_SECRET_KEY', {
+        expiresIn: '1h',
+      });
+
+      return user;
+    },
   },
-  createUser: ({ name, email }) => {
-    const users = getUsers();
-    const newUser = { id: String(users.length + 1), name, email };
-    users.push(newUser);
-    saveUsers(users);
-    return newUser;
-  },
-  updateUser: ({ id, name, email }) => {
-    const users = getUsers();
-    const user = users.find(user => user.id === id);
-    if (!user) {
-      throw new Error(`User with ID ${id} not found.`);
-    }
-    user.name = name || user.name;
-    user.email = email || user.email;
-    saveUsers(users);
-    return user;
-  },
-  deleteUser: ({ id }) => {
-    const users = getUsers();
-    const userIndex = users.findIndex(user => user.id === id);
-    if (userIndex === -1) {
-      throw new Error(`User with ID ${id} not found.`);
-    }
-    const deletedUser = users[userIndex];
-    users.splice(userIndex, 1);
-    saveUsers(users);
-    return deletedUser;
-  }
 };
 
 module.exports = resolvers;
