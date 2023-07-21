@@ -117,3 +117,13 @@ p{
 
 
 
+
+.footer-container {
+  position: fixed; /* You can also use 'absolute' if you want the link at the bottom of the 'gallery' div */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-image: url('/src/images/machine-tools_585723-81.avif');
+  padding: 10px;
+  text-align: center;
+}

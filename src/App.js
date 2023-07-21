@@ -36,6 +36,9 @@ function App() {
       {currentPage === 'Contact' && <Contact />}
       {currentPage === 'About' && <About />}
       {currentPage === 'Gallery' && <Gallery />}
+      
+      
+      
     </div>
   );
 }
