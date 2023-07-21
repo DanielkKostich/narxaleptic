@@ -138,3 +138,16 @@ p{
   padding: 10px;
   text-align: center;
 }
+
+.back {
+  background-image: url('/src/images/machine-tools_585723-81.avif');
+  color: rgb(255, 192, 18);
+  padding: 1px; /* Adjust the padding as needed for spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 150px; /* Set the maximum width for the div */
+  margin: 0 auto; /* Center the div horizontally */
+  
+}
