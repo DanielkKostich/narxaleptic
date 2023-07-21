@@ -16,7 +16,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       // Send login request to the server
-      const response = await axios.post('/login', formData);
+      const response = await axios.post('/loginpage', formData);
 
       // Handle successful login
       console.log(response.data); // You can handle the response here (e.g., store the JWT token)
