@@ -10,6 +10,7 @@
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
   
+
 //     try {
 //       const response = await fetch('./email/save-email', {
 //         method: 'POST',
@@ -18,7 +19,6 @@
 //         },
 //         body: JSON.stringify({ email }),
 //       });
-  
 //       if (response.ok) {
 //         console.log('Email saved successfully');
 //         setEmail('');

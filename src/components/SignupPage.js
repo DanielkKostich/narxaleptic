@@ -28,6 +28,7 @@ const SignupPage = () => {
   };
 
   return (
+
     <div className="gallery">
       <div>
         <h2>Signup</h2>
@@ -64,6 +65,7 @@ const SignupPage = () => {
           </div>
           <button type="submit">Signup</button>
         </form>
+
       </div>
     </div>
   );
