@@ -30,10 +30,10 @@ const SignupPage = () => {
   return (
 
     <div className="gallery">
-      <div>
-        <h2>Signup</h2>
+      <div className = 'signup'>
+        <h2 >Sign up</h2>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className = 'signup' >
             <label>Username</label>
             <input
               type="text"
@@ -43,7 +43,7 @@ const SignupPage = () => {
               required
             />
           </div>
-          <div>
+          <div className = 'signup'>
             <label>Email</label>
             <input
               type="email"
@@ -53,7 +53,7 @@ const SignupPage = () => {
               required
             />
           </div>
-          <div>
+          <div className = 'signup'>
             <label>Password</label>
             <input
               type="password"
@@ -63,7 +63,7 @@ const SignupPage = () => {
               required
             />
           </div>
-          <button type="submit">Signup</button>
+          <button className = 'back' type="submit">Signup</button>
         </form>
 
       </div>

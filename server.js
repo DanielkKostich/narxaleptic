@@ -35,7 +35,7 @@ app.use(
 const User = require('./models/User');
 
 // Signup route
-app.post('/signuppage', async (req, res) => {
+app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {

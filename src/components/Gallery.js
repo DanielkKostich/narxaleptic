@@ -20,8 +20,8 @@ function Gallery() {
   return (
     <Jumbotron fluid className=" gallery">
       <Container>
-        <h1 className='header'>Our Previous Work</h1>
-        <p className='header'>We specialize in building cars.</p>
+        <h1 className='header signup'>Our Previous Work</h1>
+        <p className='header signup'>We specialize in building cars.</p>
       </Container>
       <div className="carousel-container">
         <Carousel
