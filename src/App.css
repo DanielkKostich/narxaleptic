@@ -30,6 +30,7 @@
 }
 
 h3{
+  
   font-weight: 700;
   color: rgb(0, 0, 0);
 }
@@ -47,10 +48,12 @@ h3{
 }
 
 p{
+  background-image: url('/src/images/machine-tools_585723-81.avif');
   font-weight: 650;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 192, 18);
   margin-left: 9%;
   margin-right: 9%;
+  border-radius: 20px 20px;
 }
 
 .menu {
@@ -162,4 +165,10 @@ p{
   justify-content: center;
   max-width: 205px; /* Set the maximum width for the div */
   margin: 0 auto; 
+}
+
+.input {
+  color: rgb(255, 192, 18);
+  background-color: #585555;
+  border-radius: 80px 20px;
 }

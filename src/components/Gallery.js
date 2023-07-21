@@ -21,7 +21,7 @@ function Gallery() {
     <Jumbotron fluid className=" gallery">
       <Container>
         <h1 className='header signup'>Our Previous Work</h1>
-        <p className='header signup'>We specialize in building cars.</p>
+        <h6 className='header signup'>We specialize in building cars.</h6>
       </Container>
       <div className="carousel-container">
         <Carousel

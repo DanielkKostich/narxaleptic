@@ -35,7 +35,7 @@ const SignupPage = () => {
         <form onSubmit={handleSubmit}>
           <div className = 'signup' >
             <label>Username:</label>
-            <input
+            <input className = 'input'
               type="text"
               name="username"
               value={formData.username}
@@ -45,7 +45,7 @@ const SignupPage = () => {
           </div>
           <div className = 'signup'>
             <label>Email:</label>
-            <input
+            <input className = 'input'
               type="email"
               name="email"
               value={formData.email}
@@ -55,7 +55,7 @@ const SignupPage = () => {
           </div>
           <div className = 'signup'>
             <label>Password:</label>
-            <input
+            <input className = 'input'
               type="password"
               name="password"
               value={formData.password}
