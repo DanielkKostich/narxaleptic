@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+const fs = require('fs');
 
 // Connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/newsletter', {
+    await mongoose.connect('mongodb://localhost:27017/email', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

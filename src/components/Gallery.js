@@ -10,18 +10,18 @@ import s10 from '../images/s-10.jpg';
 import '../App.css';
 
 function Gallery() {
-  const renderCarouselItem = (imageSrc, altText, ) => (
+  const renderCarouselItem = (imageSrc, altText,) => (
     <div>
       <img className="carousel-image" src={imageSrc} alt={altText} />
-     
+
     </div>
   );
 
   return (
     <Jumbotron fluid className=" gallery">
       <Container>
-        <h1 className = 'header'>Our Previous Work</h1>
-        <p className = 'header'>We specialize in building cars.</p>
+        <h1 className='header'>Our Previous Work</h1>
+        <p className='header'>We specialize in building cars.</p>
       </Container>
       <div className="carousel-container">
         <Carousel
@@ -40,6 +40,9 @@ function Gallery() {
           {renderCarouselItem(midget, 'A bee', '1966 Midget')}
           {renderCarouselItem(s10, 'A bee', '1993 S-10')}
         </Carousel>
+        <div className='footer-container'>
+          <h6 className='menu'> <a href='https://drag-n-drive.com/'>Our Affiliates</a> </h6>
+        </div>
       </div>
     </Jumbotron>
   );

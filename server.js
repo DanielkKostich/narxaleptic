@@ -4,11 +4,21 @@ const schema = require('./db/schema');
 const resolvers = require('./db/resolvers');
 const mongoose = require('mongoose');
 const emailroutes = require('./routes/emailroutes');
-const connectDB = require('./db/db')
+
 const app = express();
 
-// Connect to MongoDB
-app.use(connectDB());
+//Connect to MongoDB
+mongoose
+  .connect('mongodb://localhost:27017/email', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Failed to connect to MongoDB:', error);
+  });
 
 // Add GraphQL middleware
 app.use(

@@ -11,7 +11,7 @@ const SignupPopup = ({ onPopupClosed }) => {
     e.preventDefault();
   
     try {
-      const response = await fetch('./email/save-email', {
+      const response = await fetch('/email/db', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
