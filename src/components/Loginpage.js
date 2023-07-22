@@ -16,7 +16,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       // Send login request to the server
-      const response = await axios.post('/login', formData);
+      const response = await axios.post('/loginpage', formData);
 
       // Handle successful login
       console.log(response.data); // You can handle the response here (e.g., store the JWT token)
@@ -27,12 +27,12 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className = 'gallery'>
+      <h2 className = 'signup'>Please Login</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <input
+        <div className = 'signup'>
+          <label>Email:</label>
+          <input className = 'input'
             type="email"
             name="email"
             value={formData.email}
@@ -40,9 +40,9 @@ const LoginPage = () => {
             required
           />
         </div>
-        <div>
-          <label>Password</label>
-          <input
+        <div className = 'signup'>
+          <label>Password:</label>
+          <input className = 'input'
             type="password"
             name="password"
             value={formData.password}
@@ -50,7 +50,7 @@ const LoginPage = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button className = 'signup' type="submit">Login</button>
       </form>
     </div>
   );
