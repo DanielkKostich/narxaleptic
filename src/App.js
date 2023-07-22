@@ -21,7 +21,7 @@ function App() {
         <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Route path="/about"  component={About} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/contact" component={Contact} />
           <Route path="/signuppage" component={SignupPage} />
