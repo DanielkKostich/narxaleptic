@@ -35,7 +35,7 @@ app.use(
 const User = require('./models/User');
 
 // Signup route
-app.post('/signup', async (req, res) => {
+app.post('/signupPage', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
@@ -98,7 +98,7 @@ app.post('/loginpage', async (req, res) => {
 });
 
 // Signup page route for HTTP GET
-app.get('/signuppage', (req, res) => {
+app.get('/signupPage', (req, res) => {
   // You can render a signup page or send a response as needed.
   // For example, you can send a simple message:
   res.send('This is the signup page.');

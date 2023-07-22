@@ -17,7 +17,7 @@ const SignupPage = () => {
     e.preventDefault();
     try {
       // Send signup request to the server
-      const response = await axios.post('/signup', formData);
+      const response = await axios.post('/signupPage', formData);
 
       // Handle successful signup
       console.log(response.data); // You can handle the response here (e.g., show a success message or redirect the user)
