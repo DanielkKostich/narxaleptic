@@ -1,8 +1,9 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
+const mongoose = require('mongoose');
 const schema = require('./db/schema');
 const resolvers = require('./db/resolvers');
-const mongoose = require('mongoose');
+
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -10,14 +11,14 @@ const connectDB = require('./db/db');
 
 const app = express();
 
-connectDB()
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
-  });
-
+ connectDB()
+   .then(() => {
+     console.log('Connected to MongoDB');
+   })
+   .catch((err) => {
+     console.error('Error connecting to MongoDB:', err);
+   });
+   
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
 
