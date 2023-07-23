@@ -11,7 +11,7 @@ const resolvers = {
   Query: {
     users: async () => {
       try {
-        const users = await User.find();
+        const users = await User.find({});
         return users;
       } catch (error) {
         console.log('Error fetching users:', error);
