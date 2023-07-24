@@ -16,13 +16,15 @@ router.post('/users', async (req, res) => {
 // Route for getting all users
 router.get('/users', async (req, res) => {
   try {
-    const users = await User.find();
-    res.json(users);
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ error: 'Users not found' });
+    }
+    res.json(user);
   } catch (error) {
     res.status(500).json({ error: 'An error occurred' });
   }
 });
-
 // Route for getting a single user by ID
 router.get('/users/:id', async (req, res) => {
   try {
