@@ -2,7 +2,6 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./db/schema');
 const resolvers = require('./db/resolvers');
-const mongoose = require('mongoose');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -28,6 +27,10 @@ app.use(
     schema: schema,
     rootValue: resolvers,
     graphiql: true, // Enable GraphiQL GUI for testing
+    customFormatErrorFn: (error) => {
+      console.error('GraphQL Error:', error); // Log the error to the console
+      return error; // Return the error object as-is
+    },
   })
 );
 

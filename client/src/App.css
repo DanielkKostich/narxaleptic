@@ -172,3 +172,16 @@ p{
   background-color: #585555;
   border-radius: 80px 20px;
 }
+
+.error{
+  background-color: black;
+  color: azure;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 205px; /* Set the maximum width for the div */
+  margin: 0 auto; 
+  border-radius: 20px;
+}
+
