@@ -75,8 +75,8 @@ const SignupPage = () => {
             />
           </div>
           <button className = 'back' type="submit">Signup</button>
-          {error && <div className="error">{error}</div>} {/* Show the error message */}
-      {success && <div className="error">{success}</div>} {/* Show the success message */}
+          {error && <div className="error ">{error}</div>} {/* Show the error message */}
+      {success && <div className="error ">{success}</div>} {/* Show the success message */}
         </form>
 
       </div>
