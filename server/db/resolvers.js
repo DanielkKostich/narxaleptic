@@ -11,13 +11,16 @@ const resolvers = {
         console.log('Fetching users...');
         const users = await User.find({});
         console.log('Users fetched:', users);
-        return users;
+        return users; // Make sure the 'users' array is not null
       } catch (error) {
         console.log('Error fetching users:', error);
         throw new Error('Failed to fetch users. Please try again later.');
       }
     },
   },
+
+
+
   Mutation: {
     createUser: async (_, { username, email, password }) => {
       console.log('Creating new user...');

@@ -32,7 +32,7 @@ const SignupPage = () => {
   } catch (error) {
     // Handle signup error
     setError(error.response.data.error); // Set the error message from the server response
-    setSuccess(null); // Clear any previous success message
+    setSuccess(null) ; // Clear any previous success message
   }
 };
 
