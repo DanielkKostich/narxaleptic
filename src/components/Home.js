@@ -1,10 +1,11 @@
 //import { Jumbotron, Container,  } from 'react-bootstrap';
-
-
+import React from 'react';
+import BackgroundVideo from './BackgroundVideo';
 
 function Home() {
   return (
     <div className='home'>
+      <BackgroundVideo />
       <header className='header'>
         <h1>Welcome to Narxaleptics!</h1>
       </header>
