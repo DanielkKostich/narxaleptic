@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const jwtSecret = process.env.jwtSecret;
-
 const resolvers = {
   Query: {
     users: async () => {

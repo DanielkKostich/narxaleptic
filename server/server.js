@@ -2,11 +2,11 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./db/schema');
 const resolvers = require('./db/resolvers');
-
+const { ApolloServer } = require("apollo-server");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const connectDB = require('./db/db');
-
+const server = new ApolloServer({ schema, resolvers });
 const app = express();
 
 connectDB()
@@ -33,7 +33,9 @@ app.use(
     },
   })
 );
-
+server.listen().then(({ url }) => {
+  console.log(`Apollo Server is running at ${url}`);
+});
 // User model
 const User = require('./models/User');
 
