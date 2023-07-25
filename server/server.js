@@ -1,12 +1,12 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const schema = require('./db/schema');
+const typeDefs = require('./db/schema');
 const resolvers = require('./db/resolvers');
 const { ApolloServer } = require("apollo-server");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const connectDB = require('./db/db');
-const server = new ApolloServer({ schema, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers });
 const app = express();
 
 connectDB()
@@ -21,21 +21,7 @@ connectDB()
 app.use(express.json()); // Parse JSON request bodies
 
 // Add GraphQL middleware
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema: schema,
-    rootValue: resolvers,
-    graphiql: true, // Enable GraphiQL GUI for testing
-    customFormatErrorFn: (error) => {
-      console.error('GraphQL Error:', error); // Log the error to the console
-      return error; // Return the error object as-is
-    },
-  })
-);
-server.listen().then(({ url }) => {
-  console.log(`Apollo Server is running at ${url}`);
-});
+
 // User model
 const User = require('./models/User');
 
@@ -119,6 +105,22 @@ app.get('/loginpage', (req, res) => {
 // Root path route
 app.get('/', (req, res) => {
   res.send('Hello, welcome to my server!');
+});
+  
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema: typeDefs,
+    rootValue: resolvers,
+    graphiql: true, // Enable GraphiQL GUI for testing
+    customFormatErrorFn: (error) => {
+      console.error('GraphQL Error:', error); // Log the error to the console
+      return error; // Return the error object as-is
+    },
+  })
+);
+server.listen().then(({ url }) => {
+  console.log(`Apollo Server is running at ${url}`);
 });
 
 const port = 3000;

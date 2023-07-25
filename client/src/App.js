@@ -7,6 +7,7 @@ import Contact from './components/Contact';
 import SignupPage from './components/SignupPage';
 import Loginpage from './components/Loginpage';
 import NavBar from './components/NavBar';
+import DisplayDataPage from './components/display'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
@@ -34,6 +35,7 @@ function App() {
           <Route path="/contact" component={Contact} />
           <Route path="/signuppage" component={SignupPage} />
           <Route path="/loginpage" component={Loginpage} />
+          <Route path="/display" component={DisplayDataPage} />
         </Switch>
       </div>
     </Router>

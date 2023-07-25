@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+require('graphql');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const jwtSecret = process.env.jwtSecret;
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -10,14 +12,18 @@ const resolvers = {
         console.log('Fetching users...');
         const users = await User.find({});
         console.log('Users fetched:', users);
-        return users; // Make sure the 'users' array is not null
+        if (!users) {
+          console.log('Users is null');
+          // You can throw an error or return an empty array here if needed
+        }
+        return users;
       } catch (error) {
         console.log('Error fetching users:', error);
         throw new Error('Failed to fetch users. Please try again later.');
       }
     },
   },
-
+  
 
 
   Mutation: {
@@ -49,7 +55,7 @@ const resolvers = {
     },
     login: async (_, { email, password }) => {
       console.log('User login...');
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email, username, id });
       if (!user) {
         console.log('User not found');
         throw new Error('User not found');
