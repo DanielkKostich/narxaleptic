@@ -61,6 +61,15 @@ function NavBar({ currentPage, handlePageChange }) {
           Login
         </NavLink>
       </li>
+      <li className="item">
+        <NavLink
+          to="/display"
+          className="nav-link"
+          activeClassName="active"
+        >
+          display
+        </NavLink>
+      </li>
     </ul>
   );
 }

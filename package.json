@@ -11,21 +11,15 @@
     "develop": "concurrently \"cd client && npm start\" \"cd server && node server\"",
     "build": "cd client && npm run build"
   },
-  "eslintConfig": {
-        "extends": [
-           "react-app",
-           "react-app/jest"
-         ]
-       },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies":  {
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "concurrently": "^5.1.0",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
-
-
-
-
