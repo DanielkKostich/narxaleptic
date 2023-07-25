@@ -1,56 +1,43 @@
 //import { Jumbotron, Container,  } from 'react-bootstrap';
-
-
+import React from 'react';
+import BackgroundVideo from './BackgroundVideo';
+import GoogleMaps from './GoogleMaps';
 
 function Home() {
   return (
     <div className='home'>
-      <header className='header'>
-        <h1>Welcome to Narxaleptics!</h1>
-      </header>
-
-      <section >
-        <h3>Our Services Include:</h3>
-        <br></br>
-        <h3>Customizations:</h3>
-        <p >From custom paint jobs to performance enhancements, our skilled technicians can bring your unique vision to life.</p>
-        <br></br>
-        <h3>Restorations:</h3>
-        <p >Preserve the timeless beauty of your classic car with our meticulous restoration services, combining originality with modern upgrades.</p>
-        <br></br>
-        <h3>Fabrication:</h3>
-        <p >Our experienced fabricators can craft bespoke components and perform body modifications tailored to your specifications.</p>
-        <br></br>
-        <h3>Performance Upgrades:</h3>
-        <p >Unlock the full potential of your vehicle with our performance upgrade solutions, optimizing power, handling, and tuning.</p>
-        <br></br>
-        <h3>Maintenance and Repairs:</h3>
-        <p >Ensure your vehicle operates at its best with our comprehensive maintenance services and timely repairs.</p>
+      <section>
+        <header className='title1'>
+        <h1>Welcome to Narxoleptic Customs!</h1>
+        </header>
       </section>
-      <br></br>
 
-      <section >
-        <h1 className = 'header'>Why Choose Us?</h1>
-        <br></br>
-        <h3>Expertise and Craftsmanship:</h3>
-        <p>Our passionate team of professionals delivers top-quality craftsmanship with meticulous attention to detail.</p>
-        <br></br>
-        <h3>Personalized Approach:</h3>
-        <p >We collaborate closely with you to understand your unique preferences and design customizations that reflect your style.</p>
-        <br></br>
-        <h3>Cutting-Edge Technology:</h3>
-        <p >We leverage advanced tools and diagnostic equipment to provide precise and efficient services.</p>
-        <br></br>
-        <h3>Customer Service:</h3>
-        <p >We prioritize exceptional customer service and strive to build lasting relationships with our clients.</p>
-
-
-        <p >Visit us at 8512 Grady Lane in Decatur, Ar 72722 and let us transform your car into a true reflection of your passion and style.</p>
-        <p >Thank you for choosing Narxaleptic. We look forward to working with you!</p>
+      <div className='parallax-container'>
+      <section>
+      <BackgroundVideo/>
+      <h1>We rebuild, modify, and increase performance on anything with an engine.</h1>
       </section>
+      </div>
+
+      <section>
+        <header className='title1'>
+        <h1>bottom text</h1>
+        </header>
+      </section>
+
+      <div className='home'>
+        <section>
+          
+        </section>
+      </div>
+      <div className='map'>
+      <GoogleMaps />
+      </div>  
+
       <div className='footer-container'>
         <h6 className='menu'> <a href='https://drag-n-drive.com/'>Our Affiliates</a> </h6>
       </div>
+
     </div>
   );
 }

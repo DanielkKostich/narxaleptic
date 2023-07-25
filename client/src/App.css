@@ -5,7 +5,6 @@
 
 .home{
   
-  background-image: url('/src/images/wepik.png');
   text-align: center;
 }
 
@@ -45,6 +44,9 @@ h3{
   font-weight: 900;
   color:rgb(0, 0, 0);
   text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  position: relative;
 }
 
 p{
@@ -58,30 +60,51 @@ p{
 
 .menu {
   background-image: url('/src/images/machine-tools_585723-81.avif');
-  max-height: 10vh;
+  height: 13.2;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(1px + 2vmin);
+  font-size: 1.7rem;
   color: rgb(117, 114, 114);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  text-transform: uppercase;
 }
 
 .menu a:hover{
   color: rgb(255, 123, 0);
 }
 
-
-
-
 .menu a {
   
   margin: 0 10px; /* Adjust the margin as needed */
-  color: rgb(248, 4, 4);
+  color: rgb(0, 174, 255);
   text-decoration: none; 
 }
 
+.logo {
+position:relative;
+left:0;
+top: 50%;
+transform: (0, 50%);
+&:hover {
+  animation: shake 0.8s infinite;
+}
+}
 
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
 
 .gallery{
   background-image: url('/src/images/background.jpg');
@@ -129,12 +152,9 @@ p{
 
 }
 
-
-
-
 .footer-container {
   position: fixed; /* You can also use 'absolute' if you want the link at the bottom of the 'gallery' div */
-  bottom: 0;
+  bottom: 20px;
   left: 0;
   width: 100%;
   background-image: url('/src/images/machine-tools_585723-81.avif');
@@ -165,6 +185,7 @@ p{
   justify-content: center;
   max-width: 205px; /* Set the maximum width for the div */
   margin: 0 auto; 
+  position: relative;
 }
 
 .input {
@@ -185,3 +206,64 @@ p{
   border-radius: 20px;
 }
 
+/* parallax scroll */
+.parallax-inner{
+  position:relative;
+  min-height: 500px;
+  background-position: top center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+/* actually working parallax */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+  height: 600px; /* Adjust this value based on your needs */
+
+}
+.parallax-container h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 5.2rem;
+  text-align: center;
+  margin: 8.5%;
+  z-index: 0;
+  
+}
+
+/* video background */
+#background-video {
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  filter: grayscale(100%) brightness(50%);
+  min-height: 100%;
+}
+/* google map */
+.map {
+  padding-bottom: 50%;
+  position: relative;
+}
+.title1{
+  font-weight: 900;
+  color:rgb(0, 0, 0);
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  padding: 200px;
+  position: relative;
+
+}
+/* small screen style changes */
+@media only screen and (max-width: 655px) {
+  .parallax-container h1 {font-size: 4rem;}
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .parallax-container h1 {color: rgb(255, 255, 255);}
+}

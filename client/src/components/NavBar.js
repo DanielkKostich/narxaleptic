@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'; // Use NavLink instead of Link
+import narxLogo from '../images/narxLogo.png';
 
 function NavBar({ currentPage, handlePageChange }) {
   // Remove the handleLinkClick function
 
   return (
     <ul className="nav menu">
+      <img src={narxLogo} alt="Logo" className="logo" />
       <li className="item">
         <NavLink
           exact
