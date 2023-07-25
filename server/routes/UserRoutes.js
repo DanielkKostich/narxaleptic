@@ -16,7 +16,7 @@ router.post('/users', async (req, res) => {
 // Route for getting all users
 router.get('/users', async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.find();
     if (!user) {
       return res.status(404).json({ error: 'Users not found' });
     }
