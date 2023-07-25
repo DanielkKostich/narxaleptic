@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useMutation, gql } from '@apollo/client';
+
+const CREATE_USER = gql`
+  mutation CreateUser($username: String!, $email: String!, $password: String!) {
+    createUser(username: $username, email: $email, password: $password) {
+      username
+      email
+    }
+  }
+`;
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -7,46 +16,46 @@ const SignupPage = () => {
     email: '',
     password: '',
   });
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
+
+  const [success, setSuccess] = useState(''); // State to display success message
+
+  const [createUser, { loading, error }] = useMutation(CREATE_USER, {
+    onError: (error) => {
+      console.error('Error creating user:', error.message);
+    },
+    onCompleted: (data) => {
+      console.log('User created:', data.createUser);
+      setSuccess('User created successfully'); // Set the success message
+    },
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    // Send signup request to the server
-    const response = await axios.post('/signupPage', formData);
+  function handleSubmit(e) {
+    e.preventDefault();
 
-    // Handle successful signup
-    setSuccess('Signup successful! You can now log in.'); // Set the success message
-    setError(null); // Clear any previous error message
-    setFormData({ // Clear the form after successful signup
-      username: '',
-      email: '',
-      password: '',
+    createUser({
+      variables: {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      },
     });
-  } catch (error) {
-    // Handle signup error
-    setError(error.response.data.error); // Set the error message from the server response
-    setSuccess(null) ; // Clear any previous success message
   }
-};
-
 
   return (
-
     <div className="gallery">
       <div>
-        <h2 className = 'signup'>Register:</h2>
-        
+        <h2 className="signup">Register:</h2>
+
         <form onSubmit={handleSubmit}>
-          <div className = 'signup' >
+          <div className="signup">
             <label>Username:</label>
-            <input className = 'input'
+            <input
+              className="input"
               type="text"
               name="username"
               value={formData.username}
@@ -54,9 +63,10 @@ const SignupPage = () => {
               required
             />
           </div>
-          <div className = 'signup'>
+          <div className="signup">
             <label>Email:</label>
-            <input className = 'input'
+            <input
+              className="input"
               type="email"
               name="email"
               value={formData.email}
@@ -64,9 +74,10 @@ const SignupPage = () => {
               required
             />
           </div>
-          <div className = 'signup'>
+          <div className="signup">
             <label>Password:</label>
-            <input className = 'input'
+            <input
+              className="input"
               type="password"
               name="password"
               value={formData.password}
@@ -74,13 +85,13 @@ const SignupPage = () => {
               required
             />
           </div>
-          <button className = 'back' type="submit">Signup</button>
-          {error && <div className="error ">{error}</div>} {/* Show the error message */}
-      {success && <div className="error ">{success}</div>} {/* Show the success message */}
+          <button className="back" type="submit">
+            Signup
+          </button>
+          {error && <div className="error">{error.message}</div>} {/* Show the error message */}
+          {success && <div className="success">{success}</div>} {/* Show the success message */}
         </form>
-
       </div>
-      
     </div>
   );
 };
