@@ -8,7 +8,7 @@ const DisplayDataPage = () => {
   const handleFetchUsersEmail = async () => {
     try {
       setLoading(true);
-      const response = await axios.post('/graphql', {
+      const response = await axios.post('http://localhost:3000/graphql', {
         query: `
           query {
             users {
@@ -27,13 +27,13 @@ const DisplayDataPage = () => {
   };
 
   return (
-    <div>
-      <h1>Fetch Users Email</h1>
-      <button onClick={handleFetchUsersEmail} disabled={loading}>
+    <div className = 'gallery'>
+      <h3 className = 'signup'>Users Email</h3>
+      <button className = 'signup' onClick={handleFetchUsersEmail} disabled={loading}>
         {loading ? 'Loading...' : 'Fetch Users Email'}
       </button>
       {usersEmail.length > 0 && (
-        <ul>
+        <ul className = 'signup'>
           {usersEmail.map((email, index) => (
             <li key={index}>{email}</li>
           ))}

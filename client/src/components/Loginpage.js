@@ -6,6 +6,7 @@ const LoginPage = () => {
     email: '',
     password: '',
   });
+  const [error, setError] = useState(null); // State to hold the error message
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,25 +15,42 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null); // Clear any previous error
+  
     try {
-      // Send login request to the server
-      const response = await axios.post('/loginpage', formData);
-
+      // Send login request to the server with a GraphQL query
+      const response = await axios.post('/graphql', {
+        query: `
+          query Login($email: String!, $password: String!) {
+            login(email: $email, password: $password) {
+              // Include any fields you want to receive in the response upon successful login
+            }
+          }
+        `,
+        variables: {
+          email: formData.email,
+          password: formData.password,
+        },
+      });
+  
       // Handle successful login
-      console.log(response.data); // You can handle the response here (e.g., store the JWT token)
+      console.log(response.data.data.login); // You can handle the response here (e.g., store the JWT token)
     } catch (error) {
-      // Handle login error
-      console.log(error.response.data); // You can handle the error response here (e.g., show an error message)
+      // Handle login error and set the error state
+      setError(error.response.data.error);
     }
   };
+  
 
   return (
-    <div className = 'gallery'>
-      <h2 className = 'signup'>Please Login</h2>
+    <div className="gallery">
+      <h2 className="signup">Please Login</h2>
+      {error && <p className="error">{error}</p>} {/* Display the error message if there is an error */}
       <form onSubmit={handleSubmit}>
-        <div className = 'signup'>
+        <div className="signup">
           <label>Email:</label>
-          <input className = 'input'
+          <input
+            className="input"
             type="email"
             name="email"
             value={formData.email}
@@ -40,9 +58,10 @@ const LoginPage = () => {
             required
           />
         </div>
-        <div className = 'signup'>
+        <div className="signup">
           <label>Password:</label>
-          <input className = 'input'
+          <input
+            className="input"
             type="password"
             name="password"
             value={formData.password}
@@ -50,7 +69,9 @@ const LoginPage = () => {
             required
           />
         </div>
-        <button className = 'signup' type="submit">Login</button>
+        <button className="signup" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );

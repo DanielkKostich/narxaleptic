@@ -11,7 +11,7 @@ import DisplayDataPage from './components/display'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'https:localhost3000/', // Replace with your Apollo Server URL
+  uri: '/graphql', // Replace with your Apollo Server URL
   cache: new InMemoryCache(),
 });
 
