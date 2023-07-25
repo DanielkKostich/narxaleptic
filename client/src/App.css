@@ -28,12 +28,6 @@
   margin: 10px;
 }
 
-h3{
-  
-  font-weight: 700;
-  color: rgb(0, 0, 0);
-}
-
 .about{
  
   background-image: url('/src/images/wepik.png');
@@ -67,7 +61,6 @@ p{
   justify-content: center;
   font-size: 1.7rem;
   color: rgb(117, 114, 114);
-  position: fixed;
   width: 100%;
   z-index: 1;
   text-transform: uppercase;
@@ -154,7 +147,7 @@ transform: (0, 50%);
 
 .footer-container {
   position: fixed; /* You can also use 'absolute' if you want the link at the bottom of the 'gallery' div */
-  bottom: 20px;
+  bottom: 0px;
   left: 0;
   width: 100%;
   background-image: url('/src/images/machine-tools_585723-81.avif');
@@ -213,22 +206,30 @@ transform: (0, 50%);
   background-position: top center;
   background-attachment: fixed;
   background-size: cover;
+  background-image: url('/src/images/wepik.png')
 }
 /* actually working parallax */
 .parallax-container {
   position: relative;
   overflow: hidden;
   height: 600px; /* Adjust this value based on your needs */
+  font-family: 'Bebas Neue', sans-serif;
 
 }
 .parallax-container h1 {
-  font-family: 'Bebas Neue', sans-serif;
   color: rgb(255, 255, 255);
-  font-size: 5.2rem;
+  font-size: 5.5rem;
   text-align: center;
   margin: 8.5%;
-  z-index: 0;
-  
+  z-index: -1;
+}
+.parallax-container h3 {
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+  text-align: center;
+  margin: 8.5%;
+  z-index: 0; 
+  position:relative;
 }
 
 /* video background */
@@ -247,17 +248,37 @@ transform: (0, 50%);
 }
 /* google map */
 .map {
-  padding-bottom: 50%;
+  padding-bottom: 20%;
   position: relative;
 }
-.title1{
-  font-weight: 900;
+.title{
+  font-family: 'Bebas Neue', sans-serif;
   color:rgb(0, 0, 0);
-  text-align: center;
   background-color: rgb(255, 255, 255);
-  padding: 200px;
+  padding: 100px;
   position: relative;
+  bottom: 0;
+  object-fit: cover;
+}
+.title h1{
+  font-size: 50px;
+  font-weight:bold;
+}
+.title h2{
+  font-size: 60px;
+}
+.title h4 {
+  font-size: 40px;
 
+}
+.body-text{
+  font-family: 'Bebas Neue', sans-serif;
+  color:rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  padding: 100px;
+  position: relative;
+  bottom: 0;
+  object-fit: cover;
 }
 /* small screen style changes */
 @media only screen and (max-width: 655px) {
@@ -266,4 +287,75 @@ transform: (0, 50%);
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .parallax-container h1 {color: rgb(255, 255, 255);}
+}
+/* Apply styles for smaller screens (adjust breakpoint as needed) */
+@media (max-width: 768px) {
+  .services-list li {
+    width: 90%;
+  }
+}
+
+/* Home.css */
+.services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Set the services container to occupy the full viewport height */
+  height: 1500px; /* Adjust this value based on your needs */
+  font-family: 'Bebas Neue', sans-serif;
+  
+
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  max-width: 800px; /* Set the maximum width of the services list */
+
+}
+
+.services-list li {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0 1rem;
+  background: none;
+
+}
+.services-list p {
+  background: none;
+  color: rgb(255, 255, 255);
+  font-size:35px;
+  font-weight:10;
+}
+
+h3{
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  font-weight: bold;
+}
+.bye {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Bebas Neue', sans-serif;
+  color: rgb(255, 255, 255);
+  
+}
+/* CSS for title h2 styling */
+.title h2 {
+  font-size: 60px;
+  /* Add any other desired styles for the title h2 here */
+}
+
+/* CSS for links in the last section */
+.links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px; /* Adjust the spacing as needed */
+  margin-top: 20px; /* Add margin at the top to separate from the content above */
+  font-weight:bold;
+  font-size: 60px;
+
 }

@@ -3,7 +3,8 @@ import { GoogleMap, withGoogleMap, withScriptjs, Marker, DirectionsRenderer } fr
 
 const MapComponent = ({ destination, userLocation }) => {
   const [directions, setDirections] = useState(null);
-
+const apiKey = process.env.REACT_APP_API_KEY;
+  console.log(apiKey);
   useEffect(() => {
     if (userLocation && destination) {
       const directionsService = new window.google.maps.DirectionsService();
@@ -56,7 +57,7 @@ const GoogleMaps = () => {
   return (
     <div style={{ width: '100%', height: '300px' }}>
       <WrappedMapComponent
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyCiSe_uYAQ5ixtN6szu1CFAPGH7lRTkVjA&libraries=places`} // MOVE THIS TO .ENV LATER
+        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_API_KEY}&libraries=places`} // MOVE THIS TO .ENV LATER
         loadingElement={<div style={{ height: '100%' }} />}
         containerElement={<div style={{ height: '100%' }} />}
         mapElement={<div style={{ height: '100%' }} />}

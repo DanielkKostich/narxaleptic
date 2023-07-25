@@ -7,7 +7,7 @@ const BackgroundVideo = () => {
     const handleParallaxScroll = () => {
       const offset = window.pageYOffset;
       const parallaxVideo = document.getElementById('background-video');
-      parallaxVideo.style.transform = `translateY(${offset * 0.4}px)`;
+      parallaxVideo.style.transform = `translateY(${offset * 0.12}px)`;
     };
 
     window.addEventListener('scroll', handleParallaxScroll);
